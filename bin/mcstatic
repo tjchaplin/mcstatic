@@ -1,0 +1,14 @@
+#! /usr/bin/env node
+var http = require('http');
+var mcstatic = require('../index');
+
+var options = {
+	root : '../test/public',
+	baseDir : '',
+	port : 8080
+};
+
+http.createServer(mcstatic(options))
+	.listen(options.port, function () {
+		console.log('mcstatic serving ' + options.dir + ' on port ' + options.port);
+	});
