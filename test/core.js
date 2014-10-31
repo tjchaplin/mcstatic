@@ -16,15 +16,11 @@ test('core', function (t) {
   var filenames = Object.keys(cases);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
-  var server = http.createServer(
-    mcstatic({
-      root: root,
-      baseDir: ""
-    })
-  );
+  var server = http.createServer(mcstatic({root: root}));
 
   server.listen(port, function () {
     var pending = filenames.length;
+    console.log(filenames);
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + path.join('/', "", file),
           headers = cases[file].headers || {};

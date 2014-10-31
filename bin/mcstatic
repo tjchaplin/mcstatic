@@ -3,7 +3,7 @@ var http = require('http');
 var mcstatic = require('../index');
 
 var options = {
-	root : '../test/public',
+	root : './test/public',
 	baseDir : '',
 	port : 8080
 };
