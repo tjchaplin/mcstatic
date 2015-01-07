@@ -1,14 +1,26 @@
 #! /usr/bin/env node
 var http = require('http');
+var program = require('commander');
 var mcstatic = require('../index');
+var version = require('../package.json');
 
 var options = {
-	root : './test/public',
-	baseDir : '',
+	root : './',
 	port : 8080
 };
 
+program
+	.version(version)
+	.usage('<directory>')
+	.option('-p, --port [value]', 'Port to use. Default is '+options.port+'.')
+	.parse(process.argv);
+
+if(program.port)
+	options.port = program.port;
+if(program.args.length > 0)
+	options.root = program.args[0];
+	
 http.createServer(mcstatic(options))
 	.listen(options.port, function () {
-		console.log('mcstatic serving ' + options.dir + ' on port ' + options.port);
+		console.log('mcstatic serving ' + options.root + ' on port ' + options.port);
 	});

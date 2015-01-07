@@ -17,7 +17,6 @@ describe('When using mcstatic server',function(){
     beforeEach(function(done){
         server = http.createServer(mcstatic(options))
                     .listen(options.port, function () {
-                        console.log('mcstatic serving ' + options.dir + ' on port ' + options.port);
                         done();
                     });
     })
@@ -32,7 +31,7 @@ describe('When using mcstatic server',function(){
         var body = null;
         var error = null;
         var response = null;
-        var file = filenames[1];
+        var file = filenames[4];
         var expected = cases[file];
 
         beforeEach(function(done){
@@ -56,17 +55,18 @@ describe('When using mcstatic server',function(){
             error = null;
             response = null;
         });
+
         it('Should have correct status code',function(){
             assert(expected.statusCode === response.statusCode)
         });
         it('Should have the expected body',function(){
-            assert(body == expected.body);
+            assert(body === expected.body);
         });
         it('Should have the expected header location',function(){
-            assert(expected.headers.location == response.headers.location);
+            assert(expected.headers.location === response.headers.location);
         });
         it('Should have the expected content type',function(){
-            assert(expected.headers['content-type'] == response.headers['content-type']);
+            assert(expected.headers['content-type'] === response.headers['content-type']);
         });
     })
 });
