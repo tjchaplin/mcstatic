@@ -2,7 +2,7 @@
   "name": "mcstatic",
   "description": "Static Http server for mocking and stuff",
   "author": "Tim Chaplin <tim.chaplin@ticktockdevelopment.com>",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "repository": {
     "type": "git",
     "url": "git@github.com:tjchaplin/mcstatic.git"
@@ -13,11 +13,11 @@
     "mime": "1.2.x",
     "minimist": "~0.0.5",
     "commander": "~2.5.0",
-    "temp": "~0.8.1"
+    "temp": "~0.8.1",
+    "request": "2.12.x"
   },
   "devDependencies": {
     "mocha": "0.3.x",
-    "request": "2.12.x",
     "express": "3.0.x",
     "union": "0.3.x",
     "mkdirp": "0.3.x",
