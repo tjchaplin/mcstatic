@@ -56,7 +56,7 @@ describe('When using mcstatic server',function(){
         beforeEach(function(done){
             var requestOptions = {
                 server : server,
-                uri : baseUrl + '/__mcstatic__/',
+                uri : baseUrl + '/__mcstatic__/GET',
                 port : port,
                 headers : {},
                 json: testData

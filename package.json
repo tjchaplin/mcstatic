@@ -2,7 +2,7 @@
   "name": "mcstatic",
   "description": "Static Http server for mocking and stuff",
   "author": "Tim Chaplin <tim.chaplin@ticktockdevelopment.com>",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "repository": {
     "type": "git",
     "url": "git@github.com:tjchaplin/mcstatic.git"
