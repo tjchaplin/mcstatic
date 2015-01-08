@@ -2,11 +2,10 @@
 var http = require('http');
 var program = require('commander');
 var mcstatic = require('../index');
-var version = require('../package.json');
+var version = require('../package.json').version;
 
 var options = {
-	root : './',
-	port : 8080
+	root : './'
 };
 
 program
@@ -15,12 +14,12 @@ program
 	.option('-p, --port [value]', 'Port to use. Default is '+options.port+'.')
 	.parse(process.argv);
 
+var port = 8080;
 if(program.port)
-	options.port = program.port;
+	port = program.port;
 if(program.args.length > 0)
 	options.root = program.args[0];
-	
-http.createServer(mcstatic(options))
-	.listen(options.port, function () {
-		console.log('mcstatic serving ' + options.root + ' on port ' + options.port);
+
+mcstatic(options).createServer().listen(port, function () {
+		console.log('mcstatic serving ' + options.root + ' on port ' + port);
 	});

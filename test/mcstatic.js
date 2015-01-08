@@ -2,21 +2,21 @@ var http = require('http');
 var assert = require('assert');
 var request = require('./request');
 var cases = require('./common-cases');
-var mcstatic =  require('../index.js');
+var mcstatic = require('../index.js');
 
 var filenames = Object.keys(cases);
 
 describe('When using mcstatic server',function(){
     var options = {
-        root : './test/public',
-        port : 8080
+        root : './test/public'
     };
+    var port = 8080;
     var server ={};
-    var baseUrl = 'http://localhost:' + options.port;
+    var baseUrl = 'http://localhost:' + port;
 
     beforeEach(function(done){
-        server = http.createServer(mcstatic(options))
-                    .listen(options.port, function () {
+        server = mcstatic(options).createServer()
+                    .listen(port, function () {
                         done();
                     });
     })
@@ -31,7 +31,7 @@ describe('When using mcstatic server',function(){
         var body = null;
         var error = null;
         var response = null;
-        var file = filenames[4];
+        var file = filenames[1];
         var expected = cases[file];
 
         beforeEach(function(done){
