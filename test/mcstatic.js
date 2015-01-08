@@ -13,11 +13,10 @@ describe('When using mcstatic server',function(){
     };
     var port = 8080;
     var server ={};
-    var mcstaticInstance = mcstatic(options);
     var baseUrl = 'http://localhost:' + port;
 
     beforeEach(function(done){
-        server = mcstaticInstance.createServer()
+        server = mcstatic.createServer(options)
                     .listen(port, function () {
                         done();
                     });
@@ -84,10 +83,10 @@ describe('When using mcstatic server',function(){
     describe('When mocking a get request',function(){
         var testData = {'item1':1};
         beforeEach(function(){
-            mcstaticInstance.whenGET('/api/some/path').respond(testData);
+            mcstatic.whenGET('/api/some/path').respond(testData);
         });
         afterEach(function(){
-            mcstaticInstance.flush();
+            mcstatic.flush();
         });
         it('Should return version',function(done){
             var requestOptions = {
@@ -133,6 +132,7 @@ describe('When using mcstatic server',function(){
         });
 
         it('Should have correct status code',function(){
+
             assert(expected.statusCode === response.statusCode)
         });
         it('Should have the expected body',function(){
