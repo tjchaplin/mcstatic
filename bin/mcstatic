@@ -20,6 +20,6 @@ if(program.port)
 if(program.args.length > 0)
 	options.root = program.args[0];
 
-mcstatic(options).createServer().listen(port, function () {
+mcstatic.createServer(options).listen(port, function () {
 		console.log('mcstatic serving ' + options.root + ' on port ' + port);
 	});
